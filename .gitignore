@@ -1,0 +1,49 @@
+# ===== 敏感配置：绝对不要提交 =====
+# scaffold/backend/.env 里有 MySQL 密码和 JWT 密钥
+# 带 .example 后缀的是脱敏模板，要提交
+.env
+.env.local
+!.env.example
+
+# ===== Python / 后端 =====
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# ===== 用户上传的文件（头像等），本地生成的不入库 =====
+scaffold/backend/uploads/*
+
+# ===== 前端 =====
+node_modules/
+dist/
+dist-ssr/
+coverage/
+.eslintcache
+*.timestamp-*-*.mjs
+
+# ===== 本项目里的工具缓存 / 临时产物 =====
+.uv-cache/
+.uv-python/
+.npm-cache/
+*.zip
+
+# ===== 编辑器 / 系统 =====
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 日志 =====
+logs/
+*.log
