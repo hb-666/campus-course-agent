@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
 from app.config import UPLOAD_DIR
+from app.models import *  # noqa: F401
 from app.models.user import User
 from app.database import Base, engine
 from app.api import api
