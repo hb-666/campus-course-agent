@@ -6,8 +6,8 @@ from app.models.user import User
 from app.schemas.study_plan import StudyPlanCreateRequest, StudyPlanResponse
 from app.config import STUDY_PLAN_MAX_LENGTH
 
-def list_page_studyplans(db:Session,user_id:int,page:int =1,page_size:int =10)->PageResponse:
-    query=db.query(StudyPlan).filter(StudyPlan.user_id==user_id)
+def list_page_plans(db:Session,current_user:User,page:int =1,page_size:int =10)->PageResponse:
+    query=db.query(StudyPlan).filter(StudyPlan.user_id==current_user.id)
     total=query.count()
     rows=(
         query.order_by(StudyPlan.id.desc())
@@ -15,7 +15,7 @@ def list_page_studyplans(db:Session,user_id:int,page:int =1,page_size:int =10)->
         .limit(page_size)
         .all()
     )
-    return PageResponse(list=[StudyPlanResponse.model_dump(row)for row in rows],total=total)
+    return PageResponse(list=[StudyPlanResponse.model_validate(row)for row in rows],total=total)
 
 def create_study_plan(
     db: Session, current_user: User, data: StudyPlanCreateRequest

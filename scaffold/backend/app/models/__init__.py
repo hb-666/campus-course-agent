@@ -7,5 +7,5 @@ __all__ = [
     "User",
     "Course",
     "Schedule",
-    StudyPlan,
+    "StudyPlan",
 ]

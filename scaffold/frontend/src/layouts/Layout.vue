@@ -47,6 +47,21 @@
               <el-icon><User /></el-icon>
               <span>用户管理</span>
             </el-menu-item>
+            <el-menu-item index="/manager/course" v-if="userInfo?.role === 'admin'">
+              <el-icon><Reading /></el-icon>
+              <span>课程管理</span>
+            </el-menu-item>
+            <el-menu-item index="/manager/schedule">
+              <el-icon><Calendar /></el-icon>
+              <span>我的课表</span>
+            </el-menu-item>
+            <el-menu-item
+              v-if="userInfo?.role !== 'admin'"
+              index="/manager/study-plan"
+            >
+              <el-icon><Notebook /></el-icon>
+              <span>学习计划</span>
+            </el-menu-item>
           </el-menu>
         </el-aside>
         <el-main>
@@ -61,7 +76,7 @@
 import router from '@/router'
 import { logout } from '@/utils/auth'
 import { useUser } from '@/utils/user'
-import { Menu as IconMenu, User } from '@element-plus/icons-vue'
+import { Menu as IconMenu, User, Reading, Calendar, Notebook } from '@element-plus/icons-vue'
 
 const { userInfo } = useUser()
 
